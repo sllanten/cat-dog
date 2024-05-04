@@ -20,13 +20,13 @@ return new class extends Migration
             //---------------------------------------
             $table->string('nombre');
             $table->integer('edad');
-            $table->string('tiempo_edad');
-            $table->integer('peso_kg');
+            $table->string('tiempo_edad')->nullable();
+            $table->integer('peso_kg')->nullable();
             $table->string('raza');
             $table->string('genero');
             $table->string('especie');
             $table->string('estado');
-            $table->string('descripcion');
+            $table->string('descripcion')->nullable();
             $table->timestamps();
         });
     }

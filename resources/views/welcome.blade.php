@@ -66,15 +66,16 @@
                 var celular = $('#loginCelular').val();
                 var clave = $('#loginPass').val();
 
-                if (celular == "" || numero == "") {
+                if (celular == 0 || clave == "") {
                     messageInfo(2);
 
                 } else{
-                    messageInfo(2);
+                    document.getElementById('FormLogin').submit();
                 }
             }
 
             function validateForm(){
+                event.preventDefault();
                 var nombre = $('#regNombre').val();
                 var clave = $('#regPass').val();
                 var celular = $('#regCel').val();
@@ -88,7 +89,7 @@
                     messageInfo(2);
 
                 } else{
-                    // messageInfo(2);
+                     document.getElementById('regiration_form').submit();
                 }
 
             }
@@ -155,7 +156,8 @@
           <center><h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registrate Gratis</h2></center>
             <div class="container">
                 <div class="container">
-                    <form id="regiration_form" target="" action="reg_usu.php"  method="POST">
+                    <form id="regiration_form" target="" action="{{ route('regUser') }}"  method="POST">
+                        @csrf
                         <fieldset>
                             <h2 style="color: #4c2882;">Informacion Personal</h2>
                             <div class="form-group">
@@ -182,16 +184,18 @@
                                 <label for="genero">Especie</label>
                                 <select class="custom-select" id="selectEspecie" name="selectEspecie">
                                 <option value="x" selected>Seleccione</option>
-                                <option value="1">Canino</option>
-                                <option value="2">Felino</option>
+                                    @foreach ($especie as $item2)
+                                        <option value="{{ $item2 }}">{{ $item2 }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="genero">Genero</label>
                                 <select class="custom-select" id="selectGenero" name="selectGenero">
                                     <option value="x" selected>Seleccione</option>
-                                    <option value="1">Macho</option>
-                                    <option value="2">Hembra</option>
+                                    @foreach ($genero as  $item)
+                                        <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -254,14 +258,18 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <!-- To configure the login form email address, go to mail/login_me.php and update the email address in the PHP file on line 19.-->
-                        <form id="contactForm" name="sentMessage"  method="post" novalidate="" action="login.php">
+                        <form id="FormLogin" method="post" novalidate="" action="{{ route('login') }}">
+                            @csrf
                             <div class="control-group">
                               <label for="numero_documento">Celular:</label>
-                              <input type="number"  class="form-control" name="loginCelular" id="loginCelular" placeholder="Numero de celular" required>
+                              <input type="number"  class="form-control" name="celular" id="celular" placeholder="Numero de celular"
+                               @auth disabled @endauth>
                               <label for="contraseña">Contraseña:</label>
-                              <input type="password"  class="form-control" name="loginPass" id="loginPass" placeholder="Contraseña" required>
+                              <input type="password"  class="form-control" name="password" id="password" placeholder="Contraseña" 
+                               @auth disabled @endauth>
                               <br>
-                              <input type="button" class="btn btn-success" id="btnIngreso" value="Ingresar" onclick="validateBtn()"></input>
+                              <input type="button" class="btn btn-success" id="btnIngreso" value="Ingresar" onclick="validateBtn()"
+                              @auth disabled @endauth> </input>
                               <br><br>
                               <div id="divInfo" class="msgHide">
                                 <div class="alert alert-danger" role="alert">

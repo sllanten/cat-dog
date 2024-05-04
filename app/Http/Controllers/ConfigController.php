@@ -35,4 +35,11 @@ class ConfigController extends Controller
         $especie= ['Canino','Felino'];
         return $especie;
     }
+
+    public function renderView(){
+        $genero= $this->getGenero();
+        $especie= $this->getEspecie();
+
+        return view('welcome',compact('genero','especie'));
+    }
 }
