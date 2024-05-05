@@ -69,7 +69,7 @@
                                         <br>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="{{ Route('dashboard') }}" class="btn btn-primary">Regresar atras</a>
+                                        <a href="{{ Route('usuario.dashboard') }}" class="btn btn-primary">Regresar atras</a>
                                     </div>
                                 </div>
                             </div>

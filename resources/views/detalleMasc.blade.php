@@ -69,7 +69,7 @@
                                         <br>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="{{ Route('boardMascota') }}" class="btn btn-primary">Regresar atras</a>
+                                        <a href="{{ Route('veterinario.boardMascota') }}" class="btn btn-primary">Regresar atras</a>
                                     </div>
                                 </div>
                             </div>

@@ -156,7 +156,7 @@
           <center><h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Registrate Gratis</h2></center>
             <div class="container">
                 <div class="container">
-                    <form id="regiration_form" target="" action="{{ route('regUser') }}"  method="POST">
+                    <form id="regiration_form" target="" action="{{ route('usuario.regUser') }}"  method="POST">
                         @csrf
                         <fieldset>
                             <h2 style="color: #4c2882;">Informacion Personal</h2>
@@ -258,7 +258,7 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <!-- To configure the login form email address, go to mail/login_me.php and update the email address in the PHP file on line 19.-->
-                        <form id="FormLogin" method="post" novalidate="" action="{{ route('login') }}">
+                        <form id="FormLogin" method="post" novalidate="" action="{{ route('usuario.login') }}">
                             @csrf
                             <div class="control-group">
                               <label for="numero_documento">Celular:</label>

@@ -48,7 +48,7 @@ class ConfigController extends Controller
     public function validateRol($rol){
 
         if($rol =! Auth::user()->rol){
-            return redirect()->route('login');
+            return redirect()->route('usuario.login');
         }
     }
 }

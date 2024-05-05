@@ -40,7 +40,7 @@
                                     <p>Actividades Pendientes:1</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="{{ route("boardDetalle2",$name="nina" ) }}" class="btn btn-secondary">Mas
+                                    <a href="{{ route("veterinario.boardDetalle",$name="nina" ) }}" class="btn btn-secondary">Mas
                                         detalle</a>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <p>Actividades Pendientes: 0</p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="{{ route("boardDetalle",$name="nina" ) }}" class="btn btn-secondary">Mas
+                                    <a href="{{ route("veterinario.boardDetalle",$name="nina" ) }}" class="btn btn-secondary">Mas
                                         detalle</a>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                                     <p>Actividades Pendientes: <code>1<code></p>
                                 </div>
                                 <div class="card-footer text-center">
-                                    <a href="{{ route("boardDetalle",$name="nina" ) }}" class="btn btn-secondary">Mas
+                                    <a href="{{ route("veterinario.boardDetalle",$name="nina" ) }}" class="btn btn-secondary">Mas
                                         detalle</a>
                                 </div>
                             </div>

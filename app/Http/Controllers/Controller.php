@@ -45,7 +45,7 @@ class Controller extends BaseController
         $pasNew->save();
         
         auth()->login($userNew);
-        return redirect()->route('dashboard');
+        return redirect()->route('usuario.dashboard');
    
     }
 
@@ -66,10 +66,10 @@ class Controller extends BaseController
         if (Auth::attempt($credentials)){
             request()->session()->regenerate();
             if(Auth::user()->rol ==1){
-                return redirect()->route('boardMascota');
+                return redirect()->route('veterinario.boardMascota');
             }
             if(Auth::user()->rol ==2){
-                return redirect()->route('dashboard');
+                return redirect()->route('usuario.dashboard');
             }
 
         }else{
@@ -90,7 +90,7 @@ class Controller extends BaseController
             if($id== "nina"){
                 return view('detalle');
             }else{
-                return redirect()->route('dashboard')->withErrors('Dato ingresado de forma incorrecta.');
+                return redirect()->route('usuario.dashboard')->withErrors('Dato ingresado de forma incorrecta.');
             }
         }
 

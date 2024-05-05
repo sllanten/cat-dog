@@ -13,7 +13,7 @@
                                 <p>Ultima visita: 2024/05/14</p>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="{{ route("boardDetalle",$name="nina") }}" class="btn btn-primary">Mas detalle</a>
+                                <a href="{{ route("usuario.boardDetalle",$name="nina") }}" class="btn btn-primary">Mas detalle</a>
                             </div>
                         </div>
                     </div>
