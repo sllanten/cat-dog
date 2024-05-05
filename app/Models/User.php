@@ -73,4 +73,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Models\Activities');
     }
+    
+    // Relacion Uno a muchos
+     public function historia()
+    {
+      return $this->hasMany('App\Models\Histories');
+    }
 }

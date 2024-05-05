@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class ConfigController extends Controller
 {
@@ -41,5 +43,12 @@ class ConfigController extends Controller
         $especie= $this->getEspecie();
 
         return view('welcome',compact('genero','especie'));
+    }
+
+    public function validateRol($rol){
+
+        if($rol =! Auth::user()->rol){
+            return redirect()->route('login');
+        }
     }
 }

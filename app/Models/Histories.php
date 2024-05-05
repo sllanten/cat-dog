@@ -14,4 +14,10 @@ class Histories extends Model
     {
       return $this->belongsTo('App\Models\Patients');
     }
+    
+    // Relacion Uno a Muchos
+    public function pacusuario()
+    {
+      return $this->belongsTo('App\Models\User');
+    }
 }

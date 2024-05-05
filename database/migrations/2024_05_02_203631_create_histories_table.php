@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
+                        //-------------Relacion------------------
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')->on('users');
+            //---------------------------------------
+            
             //-------------Relacion------------------
             $table->unsignedBigInteger('patient_id');
             $table->foreign('patient_id')

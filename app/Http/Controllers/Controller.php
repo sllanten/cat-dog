@@ -45,15 +45,19 @@ class Controller extends BaseController
         $pasNew->save();
         
         auth()->login($userNew);
-        return redirect('/perfil')->withErrors('Bienvenido a nuestra comunidad.');
-
+        return redirect()->route('dashboard');
+   
     }
 
     public function renderDasboard(){
-        $mascotas= Patients::where('id',Auth::user()->id)->get();
-
-        return view('dashboard',compact('mascotas'));
-
+        if(Auth::user()->rol ==1){
+            return view('boardMasc');
+        }else{
+            
+        }
+        if(Auth::user()->rol ==2){
+            return view('dashboard');
+        }
     }
 
     public function getLogin(Request $request){
@@ -61,17 +65,34 @@ class Controller extends BaseController
 
         if (Auth::attempt($credentials)){
             request()->session()->regenerate();
-            return redirect('/veterinaria/usuario')->withErrors('Bienvenido a nuestra comunidad.');
+            if(Auth::user()->rol ==1){
+                return redirect()->route('boardMascota');
+            }
+            if(Auth::user()->rol ==2){
+                return redirect()->route('dashboard');
+            }
+
         }else{
             return redirect('/')->withErrors('Ingreso Invalido, No esta registrado en nuestra comunidad.');
         }
     }
 
     public function renderDetalle(Request $request, string $id){
-        if($id== "nina"){
-            return view('detalle');
-        }else{
-            return redirect()->route('dashboard')->withErrors('FUNCIONO.');
+        
+        if(Auth::user()->rol ==1){
+            if($id== "nina"){
+                return view('detalleMasc');
+            }else{
+                return redirect()->route('boardMasc')->withErrors('Dato ingresado de forma incorrecta.');
+            }
         }
+        if(Auth::user()->rol ==2){
+            if($id== "nina"){
+                return view('detalle');
+            }else{
+                return redirect()->route('dashboard')->withErrors('Dato ingresado de forma incorrecta.');
+            }
+        }
+
     }
 }

@@ -63,13 +63,13 @@
                                     <div class="card-header">Nina</div>
                                     <div class="card-body">
                                         <br>
-                                        <p>Veterinario: Jair Torres</p>
+                                        <p>Propietario: Diana Marcela Herrera</p>
                                         <p>Celular: 3136174997</p>
                                         <p>Ultima visita: Mayo 3 de 2024</p>
                                         <br>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="{{ Route('dashboard') }}" class="btn btn-primary">Regresar atras</a>
+                                        <a href="{{ Route('boardMascota') }}" class="btn btn-primary">Regresar atras</a>
                                     </div>
                                 </div>
                             </div>
@@ -78,6 +78,10 @@
                                     <h5 class="card-title" style="font-size: 26px">Resumen</h5>
                                     <p class="card-text">Nina es una felina de 2 años de edad, a la cual se le ha
                                         realizo lo siguiente.</p><br>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-secondary" type="button">Nueva Historia clinica</button>
+                                        <button class="btn btn-secondary" type="button">Nueva actividad</button>
+                                    </div>
                                     <table class="table table-dark table-hover text-white">
                                         <thead>
                                             <tr>
@@ -96,8 +100,7 @@
                                                 <td>Finalizado</td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Ver mas"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Ver mas"
                                                         onclick="options(1,'opt1')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-box-arrow-up-right"
@@ -119,8 +122,7 @@
                                                 <td>Finalizado</td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Ver mas"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Ver mas"
                                                         onclick="options(2,'opt2')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-box-arrow-up-right"
@@ -142,8 +144,7 @@
                                                 <td>Finalizado</td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Ver mas"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Ver mas"
                                                         onclick="options(3,'opt3')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-box-arrow-up-right"
@@ -165,8 +166,7 @@
                                                 <td>En espera</td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Ver mas"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Ver mas"
                                                         onclick="options(4,'opt4')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-box-arrow-up-right"
@@ -275,7 +275,8 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>Vacuna Gripe felina (rinotraqueítis: infección por calicivirus o herpesvirus)</td>
+                                    <td>Vacuna Gripe felina (rinotraqueítis: infección por calicivirus o herpesvirus)
+                                    </td>
                                     <td>Marzo 1 de 2024</td>
                                 </tr>
                             </tbody>
