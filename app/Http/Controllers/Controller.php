@@ -16,6 +16,10 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public function getUser(){
+        return User::where('id',Auth::user()->id)->first();
+    }
+
     public function guest(){
         return view('welcome');
     }
@@ -48,50 +52,53 @@ class Controller extends BaseController
         return redirect()->route('usuario.dashboard');
    
     }
-
-    public function renderDasboard(){
-        if(Auth::user()->rol ==1){
-            return view('boardMasc');
-        }else{
-            
-        }
-        if(Auth::user()->rol ==2){
-            return view('dashboard');
-        }
-    }
-
+    
     public function getLogin(Request $request){
         $credentials = request()->only('celular', 'password');
 
         if (Auth::attempt($credentials)){
             request()->session()->regenerate();
-            if(Auth::user()->rol ==1){
-                return redirect()->route('veterinario.boardMascota');
+
+            if($this->getUser()->can('veterinario.dashboard')){
+                return redirect()->route('veterinario.dashboard');
             }
-            if(Auth::user()->rol ==2){
+
+            if($this->getUser()->can('usuario.dashboard')){
                 return redirect()->route('usuario.dashboard');
-            }
+            }      
 
         }else{
             return redirect('/')->withErrors('Ingreso Invalido, No esta registrado en nuestra comunidad.');
         }
     }
+    
+    public function renderDasboard(){
+
+        if($this->getUser()->can('veterinario.dashboard')){
+
+        }
+
+        if($this->getUser()->can('propietario.dashboard')){
+
+        }
+
+        return view('dashboard');
+    }
 
     public function renderDetalle(Request $request, string $id){
-        
-        if(Auth::user()->rol ==1){
-            if($id== "nina"){
-                return view('detalleMasc');
-            }else{
-                return redirect()->route('boardMasc')->withErrors('Dato ingresado de forma incorrecta.');
-            }
+
+        if($this->getUser()->can('veterinario.dashboard')){
+            $route= 'veterinario.dashboard';
         }
-        if(Auth::user()->rol ==2){
-            if($id== "nina"){
-                return view('detalle');
-            }else{
-                return redirect()->route('usuario.dashboard')->withErrors('Dato ingresado de forma incorrecta.');
-            }
+
+        if($this->getUser()->can('propietario.dashboard')){
+            $route= 'veterinario.dashboard';
+        }
+        
+        if($id== "nina"){
+            return view('detalle');
+        }else{
+            return redirect()->route($route)->withErrors('Dato ingresado de forma incorrecta.');
         }
 
     }

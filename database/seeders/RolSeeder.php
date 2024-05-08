@@ -26,7 +26,5 @@ class RolSeeder extends Seeder
         Permission::create(['name' => 'usuario.dashboard'])->assignRole($rolUsu);
         Permission::create(['name' => 'usuario.boardDetalle'])->assignRole($rolUsu);
 
-        $user= User::find(2);
-        $user->assignRole('veterinario');
     }
 }

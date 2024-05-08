@@ -1,15 +1,29 @@
 <x-app-layout>
     <script>
-        function options(option,id){
+        function options(option,id,table){
+            var td1,td2,td3,td3,td5;
 
             switch (option) {
                 case 1:
                     var div = document.getElementById(id);
+                    td1= document.getElementById(table+'1');
+                    td2= document.getElementById(table+'2');
+                    td3= document.getElementById(table+'3');
+                    td4= document.getElementById(table+'4');
+                    td5= document.getElementById(table+'5');
                     
                     if (div.style.display === "none") {
                         div.style.display = "block";
+                        td1.style.backgroundColor="blue";
+                        td2.style.backgroundColor="blue";
+                        td3.style.backgroundColor="blue";
+                        td4.style.backgroundColor="blue";
                     } else {
                         div.style.display = "none";
+                        td1.style.backgroundColor="#212529";
+                        td2.style.backgroundColor="#212529";
+                        td3.style.backgroundColor="#212529";
+                        td4.style.backgroundColor="#212529";
                     }
                     
                 break;
@@ -59,25 +73,51 @@
                         <div class="row g-0">
                             <div class="col-md-4 text-center">
                                 <br>
+                                @can('usuario.boardDetalle')
+                                    <div class="card text-white bg-secondary" style="max-width: 18rem;">
+                                        <div class="card-header">Nina</div>
+                                        <div class="card-body">
+                                            <br>
+                                            <p>Veterinario: Jair Torres</p>
+                                            <p>Celular: 3136174997</p>
+                                            <p>Ultima visita: Mayo 3 de 2024</p>
+                                            <br>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="{{ Route('usuario.dashboard') }}" class="btn btn-primary">Regresar atras</a>
+                                        </div>
+                                    </div>                                    
+                                @endcan
+
+                                @can('veterinario.boardDetalle')
                                 <div class="card text-white bg-secondary" style="max-width: 18rem;">
                                     <div class="card-header">Nina</div>
                                     <div class="card-body">
                                         <br>
-                                        <p>Veterinario: Jair Torres</p>
+                                        <p>Propietario: Diana Marcela Herrera</p>
                                         <p>Celular: 3136174997</p>
                                         <p>Ultima visita: Mayo 3 de 2024</p>
                                         <br>
                                     </div>
                                     <div class="card-footer">
-                                        <a href="{{ Route('usuario.dashboard') }}" class="btn btn-primary">Regresar atras</a>
+                                        <a href="{{ Route('veterinario.dashboard') }}" class="btn btn-primary">Regresar atras</a>
                                     </div>
-                                </div>
+                                </div>                                    
+                                @endcan
+
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
                                     <h5 class="card-title" style="font-size: 26px">Resumen</h5>
                                     <p class="card-text">Nina es una felina de 2 años de edad, a la cual se le ha
                                         realizo lo siguiente.</p><br>
+                                    
+                                        @can('veterinario.boardDetalle')
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <button class="btn btn-secondary" type="button">Nueva Historia clinica</button>
+                                                <button class="btn btn-secondary" type="button">Nueva actividad</button>
+                                            </div>  
+                                        @endcan                                      
                                     <table class="table table-dark table-hover text-white">
                                         <thead>
                                             <tr>
@@ -90,15 +130,15 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Baño medicado</td>
-                                                <td>Mayo 1 de 2024</td>
-                                                <td>Finalizado</td>
+                                                <th scope="row" id="act1">1</th>
+                                                <td id="act2">Baño medicado</td>
+                                                <td id="act3">Mayo 1 de 2024</td>
+                                                <td id="act4">Finalizado</td>
                                                 <td>
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="Ver mas"
-                                                        onclick="options(1,'opt1')">
+                                                        onclick="options(1,'opt1','act')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-box-arrow-up-right"
                                                             viewBox="0 0 16 16">
